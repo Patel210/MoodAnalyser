@@ -21,17 +21,23 @@ public class MoodAnalyser {
 
 	/**
 	 * @param message
-	 * @return Sad or Happy based on message input
+	 * @return Sad, Happy or Exception based on message input
+	 * @throws com.capgemini.moodanalyser.MoodAnalysisException
 	 */
-	public String analyseMood() {
+	public String analyseMood() throws com.capgemini.moodanalyser.MoodAnalysisException {
 		try {
+			if (message.length() == 0) {
+				throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_INPUT,
+						"Message cannot be empty! Please enter proper message");
+			}
 			if (message.contains("Sad")) {
 				return "SAD";
 			} else {
 				return "HAPPY";
 			}
 		} catch (NullPointerException e) {
-			return "HAPPY";
+			throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_INPUT,
+					"Please enter proper message");
 		}
 	}
 }
