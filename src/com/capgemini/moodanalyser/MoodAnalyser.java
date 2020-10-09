@@ -22,9 +22,9 @@ public class MoodAnalyser {
 	/**
 	 * @param message
 	 * @return Sad, Happy or Exception based on message input
-	 * @throws com.capgemini.moodanalyser.MoodAnalysisException
+	 * @throws MoodAnalysisException
 	 */
-	public String analyseMood() throws com.capgemini.moodanalyser.MoodAnalysisException {
+	public String analyseMood() throws MoodAnalysisException {
 		try {
 			if (message.length() == 0) {
 				throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_INPUT,
